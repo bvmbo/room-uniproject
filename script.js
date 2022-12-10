@@ -392,16 +392,11 @@ const clockAnimation = () => {
 		0
 	);
 
-	const clockLineAngle = (angle) => {
-		let lineAngle = (angle / 12) * Math.PI * 2;
-		return lineAngle;
-	};
-
 	cLines.children.forEach((line, i) => {
-		line.rotation.z = -clockLineAngle(i);
+		line.rotation.z = -((i / 12) * Math.PI * 2);
 		line.position.set(
-			(radius + 0.22) * Math.sin(clockLineAngle(i)),
-			(radius + 0.22) * Math.cos(clockLineAngle(i)),
+			(radius + 0.22) * Math.sin((i / 12) * Math.PI * 2),
+			(radius + 0.22) * Math.cos((i / 12) * Math.PI * 2),
 			0
 		);
 	});
@@ -410,6 +405,29 @@ const clockAnimation = () => {
 };
 
 clockAnimation();
+
+// CAMERA CHANGE
+
+const cam1 = document.querySelector(".cam1");
+const cam2 = document.querySelector(".cam2");
+
+const cam1Change = () => {
+	camera.position.set(-7.408451767544029, 11.376911561410346, 6.15492327543113);
+
+	if (cam2.classList.contains("active")) {
+		cam2.classList.remove("active");
+		cam1.classList.add("active");
+	}
+};
+
+const cam2Change = () => {
+	camera.position.set(7.611936482709359, 8.99828205688926, -4.94251880068938);
+
+	if (cam1.classList.contains("active")) {
+		cam1.classList.remove("active");
+		cam2.classList.add("active");
+	}
+};
 
 // SHADOWS
 
@@ -465,6 +483,9 @@ domEvents.addEventListener(outButton, "click", (event) => {
 
 domEvents.addEventListener(shutterLeft, "click", shutterStart);
 domEvents.addEventListener(shutterRight, "click", shutterStart);
+
+cam1.addEventListener("click", cam1Change);
+cam2.addEventListener("click", cam2Change);
 
 window.addEventListener(
 	"resize",
