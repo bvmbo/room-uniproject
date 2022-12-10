@@ -26,6 +26,8 @@ const spotLight = new THREE.SpotLight(0xffffff, 0.5, 0, Math.PI / 1.6);
 spotLight.castShadow = true;
 spotLight.position.y = 13;
 scene.add(spotLight);
+spotLight.shadow.mapSize.width = 4096;
+spotLight.shadow.mapSize.height = 4096;
 
 const spotLightHelper = new THREE.SpotLightHelper(spotLight);
 scene.add(spotLightHelper);
@@ -358,7 +360,7 @@ clockGroup.add(
 scene.add(clockGroup);
 clockGroup.position.set(7.9, 6, 4);
 clockGroup.rotation.y = Math.PI / -2;
-clockGroup.scale.set(1.5,1.5,1.5) // SCALING THE CLOCK
+clockGroup.scale.set(1.5, 1.5, 1.5); // SCALING THE CLOCK
 
 const clockAnimation = () => {
 	requestAnimationFrame(clockAnimation);
