@@ -1,3 +1,4 @@
+import { GLTFLoader } from "./js/GLTFLoader.js";
 const camera = new THREE.PerspectiveCamera(
 	75,
 	window.innerWidth / window.innerHeight,
@@ -405,6 +406,27 @@ const clockAnimation = () => {
 };
 
 clockAnimation();
+
+// DESK
+
+const loader = new GLTFLoader();
+loader.load(
+	"./models/scene.gltf",
+	function (gltf) {
+		let desk = gltf.scene;
+		
+
+		desk.traverse(function (node) {
+			if (node.isMesh) {
+				node.castShadow = node.receiveShadow = true;
+			}
+		});
+
+		scene.add(desk);
+		desk.position.set(5,2.9,-4.8)
+	}
+);
+
 
 // CAMERA CHANGE
 
