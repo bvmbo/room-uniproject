@@ -33,31 +33,10 @@ spotLight.shadow.mapSize.height = 4096;
 const spotLightHelper = new THREE.SpotLightHelper(spotLight);
 scene.add(spotLightHelper);
 
-// const spotLightOut = new THREE.SpotLight("red", 0.3, 70, Math.PI / 1.1);
-// spotLightOut.castShadow = true;
-// scene.add(spotLightOut);
 
-// const spotLightOutHelper = new THREE.SpotLightHelper(spotLightOut);
-// spotLightOut.position.set(0,20,-40)
-// spotLightOut.rotation.x = Math.PI / -2.5
-// scene.add(spotLightOutHelper);
 
 // aktualizacja OrbitControls.js
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
-// controls.addEventListener("change", function () {
-// 	dir.subVectors(camera.position, controls.target).normalize();
-
-// 	raycaster.set(
-// 		controls.target,
-// 		dir.subVectors(camera.position, controls.target).normalize()
-// 	);
-// 	intersects = raycaster.intersectObjects(sceneMeshes, false);
-// 	if (intersects.length > 0) {
-// 		camera.position.copy(intersects[0].point);
-// 	}
-// });
-
-// const controls = new PointerLockControls( camera, document.body );
 
 function animate() {
 	requestAnimationFrame(animate);
@@ -85,17 +64,6 @@ const floor = new THREE.Mesh(floorGeo, floorMat);
 floor.rotation.x = Math.PI / -2;
 sceneMeshes.push(floor);
 
-// // CEILING
-// const ceilingGeo = new THREE.PlaneGeometry(16, 13);
-// const ceilingMat = new THREE.MeshStandardMaterial({
-// 	color: "white",
-// 	// side: THREE.FrontSide,
-// });
-// const ceiling = new THREE.Mesh(ceilingGeo, ceilingMat);
-// ceiling.rotation.x = Math.PI / 2;
-// scene.add(ceiling);
-// sceneMeshes.push(ceiling);
-// ceiling.position.set(0, 13, 0);
 
 // WALLS SHAPE
 
